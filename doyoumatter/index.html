@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Do you matter?</title>
+		<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" type="text/css">
+		<script src="/node_modules/jquery/dist/jquery.js"></script>
+		<script src="/node_modules/popper.js/dist/popper.js"></script>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid" style="width: 75%; margin-top: 25px;">
+			<div id="matter-div" class="col-12" style="height: 100px;">
+				<h1 id="matter-text" class="display-3 text-center">Yes, you matter.</h1>
+			</div>
+			<div id="reload-div" class="col-12" style="display: none; height: 70px;">
+				<div id="reload-container" class="progress"
+					style="width:0%; margin-top: 30px;">
+					<div class="progress-bar progress-bar-striped progress-bar-animated bg-success align-middle" 
+						role="progressbar"
+						style="width: 100%"></div>
+				</div>
+			</div>
+			<div class="col-12 text-center">
+				<button type="button" 
+					class="btn btn-success btn-lg" 
+					id="recalculate"
+					onclick="recalculate()"
+				>Recalculate</button>
+			</div>
+		</div>
+		<script>
+
+			var strings = [
+				"Yes, you matter.",
+				"Yep, still mattering.",
+				"You're mattering quite alot today.",
+				"I think you are indeed mattering.",
+				"The mattering is strong.",
+				"Everything indicates you do matter",
+				"Congrats, you still matter!",
+				"Definitely mattering."
+			];
+
+			function recalculate(){
+				var button = $("#recalculate");
+				button.attr('disabled', 'disabled');
+				button.html("Recalculating...");
+				changeVisibility("#matter-div", false);
+				changeVisibility("#reload-div", true);
+				var progress = 0;
+				var reloadBar = $("#reload-container");
+				var intervalOff = setInterval(function(){
+					if(progress == 100){
+						clearInterval(intervalOff);
+						$("#matter-text").html(getNewString());
+						changeVisibility("#matter-div", true);
+						changeVisibility("#reload-div", false);
+						button.removeAttr('disabled');
+						button.html("Recalculate");
+						reloadBar.css({width: "0%"});
+					} else {
+						progress += 5;
+						reloadBar.css({width: progress + "%"});
+					}
+				}, 20);
+			}
+
+			function changeVisibility(id, show){
+				var element = $(id);
+				if(show){
+					element.css({display: 'block'});
+				} else {
+					element.css({display: 'none'});
+				}
+			}
+
+			function getNewString(){
+				var rndIndex = Math.floor(Math.random() * strings.length);
+				return strings[rndIndex];
+			}
+
+		</script>
+	</body>
+</html>
