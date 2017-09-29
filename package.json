@@ -1,0 +1,27 @@
+{
+  "name": "lucbui",
+  "version": "1.0.0",
+  "description": "A website for fun",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Justis-Lamanna/PiWebsite.git"
+  },
+  "keywords": [
+    "shoo"
+  ],
+  "author": "Lucbui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Justis-Lamanna/PiWebsite/issues"
+  },
+  "homepage": "https://github.com/Justis-Lamanna/PiWebsite#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.5"
+  }
+}
